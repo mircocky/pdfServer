@@ -5,6 +5,9 @@ const router = express.Router()
 router.get('/docs',(req,res,next) =>{
     console.log
 
+    const data = req.query.data;
+    console.log(data)
+
     const stream = res.writeHead(200,{
         'Conten-Type':'application/pdf',
         'Content-Disposition' : 'attachment;filename=docs.pdf'
@@ -12,7 +15,8 @@ router.get('/docs',(req,res,next) =>{
 
     pdfService.buildPDF(
         (chunk) => stream.write(chunk),
-        () => stream.end()
+        () => stream.end(),
+        data
     );
 })
 
