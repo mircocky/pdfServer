@@ -9,7 +9,7 @@ function buildPDF(dataCallback, endCallback, data) {
     doc.on('end', endCallback);
     doc
      .fontSize(25)
-     .text(data);
+     .text(data[0]);
     doc.end();
 
 }
